@@ -1,0 +1,74 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"csharp","items":[{"aliases":[],"languageName":"csharp","name":"csharp"}]}}
+
+#!csharp
+
+using System.Diagnostics;
+
+Stopwatch clock = new Stopwatch();
+clock.Start();
+String str = "abcdefghij";
+int value;
+char letter;
+Random random = new Random();
+for(int i = 0; i <= 1000000; i++)
+{
+    value = random.Next(0, 26);
+    letter = Convert.ToChar(value + 65);
+    str.Remove((i%10), 1);
+    str.Insert((i%10), Convert.ToString(letter));
+}
+clock.Stop();
+Console.WriteLine(clock.Elapsed);
+
+#!csharp
+
+using System.Diagnostics;
+
+Stopwatch clock = new Stopwatch();
+clock.Start();
+StringBuilder str = new StringBuilder("abcdefghij");
+int value;
+char letter;
+Random random = new Random();
+for(int i = 0; i <= 1000000; i++)
+{
+    value = random.Next(0, 26);
+    letter = Convert.ToChar(value + 65);
+    str[i % 10] = letter;
+}
+clock.Stop();
+Console.WriteLine(clock.Elapsed);
+
+#!csharp
+
+using System.Text.RegularExpressions;
+
+String str = "23:50";
+String regex = @"^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$";
+
+if(Regex.IsMatch(str, regex))
+{
+    Console.WriteLine("Valid input");
+} 
+else 
+{
+    Console.WriteLine("Invalid input");
+}
+
+#!csharp
+
+using System.Text.RegularExpressions;
+
+String str = "rererer@re.re.re";
+String regex = @"^[a-zA-Z0-9-_]+@[a-zA-Z]+(\.[a-zA-Z]+)+$";
+
+if(Regex.IsMatch(str, regex))
+{
+    Console.WriteLine("Valid input");
+} 
+else 
+{
+    Console.WriteLine("Invalid input");
+}
